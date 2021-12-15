@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import AlarmList from './pages/AlarmList';
 import AddAlarm from './pages/AddAlarm';
+import EditDeleteAlarm from './pages/EditDeleteAlarm';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ export default class App extends Component{
          <Stack.Navigator initialRouteName="Alarm">
           <Stack.Screen name="AlarmList" component={AlarmList} options={{ title: 'Alarm' }} />
           <Stack.Screen name="AddAlarm" component={AddAlarm} />
+          <Stack.Screen name="EditDeleteAlarm" component={EditDeleteAlarm} />
         </Stack.Navigator>
        </NavigationContainer>
     );

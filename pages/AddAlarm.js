@@ -10,5 +10,5 @@ class AddAlarm extends Component {
         );
     }
 }
-  
+
 export default AddAlarm;
