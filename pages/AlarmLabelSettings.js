@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 
-class EditDeleteAlarm extends Component {
+class AlarmTimeSettings extends Component {
     render() {
         return (
-            <Text>Edit/Delete Alarm</Text>
+            <Text>Alarm Label Settings</Text>
         );
     }
 }
-
-export default EditDeleteAlarm;
+    
+export default AlarmTimeSettings;
