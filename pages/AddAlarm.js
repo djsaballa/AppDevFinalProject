@@ -2,64 +2,64 @@ import React, { Component, useState }  from 'react';
 import { StyleSheet, View, Switch, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-class AddAlarm extends Component {
-    render() {
-        return (
-            <View style={ styles.container}>
-              <View style={ styles.card }>
-                <TouchableOpacity style={ styles.row } onPress={() => this.props.navigation.navigate('AlarmTimeSettings')}>
-                  <Text style={ styles.label }>Time</Text>
-                  <Text style={ styles.desc }>13:00 {" "}
-                    <Icon
-                      name="chevron-right"
-                      size={14}
-                      color="#666666"/>
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={ styles.row } onPress={() => this.props.navigation.navigate('RepeatAlarmSettings')}>
-                  <Text style={ styles.label }>Repeat</Text>
-                  <Text style={ styles.desc }>Everyday {" "}
-                    <Icon
-                      name="chevron-right"
-                      size={14}
-                      color="#666666"/>
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={ styles.row } onPress={() => this.props.navigation.navigate('AlarmLabelSettings')}>
-                  <Text style={ styles.label }>Label</Text>
-                  <Text style={ styles.desc }>Kumain ka na ba? {" "}
-                    <Icon
-                      name="chevron-right"
-                      size={14}
-                      color="#666666"/>
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={ styles.row } onPress={() => this.props.navigation.navigate('AlarmSoundSettings')}>
-                  <Text style={ styles.label }>Sound</Text>
-                  <Text style={ styles.desc }>Alarm {" "} 
-                    <Icon
-                      name="chevron-right"
-                      size={14}
-                      color="#666666"/>
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={ styles.row } onPress={() => this.props.navigation.navigate('DismissAlarmSettings')}>
-                  <Text style={ styles.label }>Dismissal Method</Text>
-                  <Text style={ styles.desc }>Single Tap {" "}
-                    <Icon
-                      name="chevron-right"
-                      size={14}
-                      color="#666666"/>
-                  </Text>
-                </TouchableOpacity>
-                <View style={ styles.lastRow }>
-                  <Text style={ styles.label }>Snooze</Text>
-                  <ToggleSwitch />                
-                </View>
-              </View>
+export default class AddAlarm extends Component {
+  render() {
+    return (
+        <View style={ styles.container}>
+          <View style={ styles.card }>
+            <TouchableOpacity style={ styles.row } onPress={() => this.props.navigation.navigate('AlarmTimeSettings')}>
+              <Text style={ styles.label }>Time</Text>
+              <Text style={ styles.desc }>13:00 {" "}
+                <Icon
+                  name="chevron-right"
+                  size={14}
+                  color="#666666"/>
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={ styles.row } onPress={() => this.props.navigation.navigate('RepeatAlarmSettings')}>
+              <Text style={ styles.label }>Repeat</Text>
+              <Text style={ styles.desc }>Never {" "}
+                <Icon
+                  name="chevron-right"
+                  size={14}
+                  color="#666666"/>
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={ styles.row } onPress={() => this.props.navigation.navigate('AlarmLabelSettings')}>
+              <Text style={ styles.label }>Label</Text>
+              <Text style={ styles.desc }>Alarm {" "}
+                <Icon
+                  name="chevron-right"
+                  size={14}
+                  color="#666666"/>
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={ styles.row } onPress={() => this.props.navigation.navigate('AlarmSoundSettings')}>
+              <Text style={ styles.label }>Sound</Text>
+              <Text style={ styles.desc }>Alarm {" "} 
+                <Icon
+                  name="chevron-right"
+                  size={14}
+                  color="#666666"/>
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={ styles.row } onPress={() => this.props.navigation.navigate('DismissAlarmSettings')}>
+              <Text style={ styles.label }>Dismissal Method</Text>
+              <Text style={ styles.desc }>Single Tap {" "}
+                <Icon
+                  name="chevron-right"
+                  size={14}
+                  color="#666666"/>
+              </Text>
+            </TouchableOpacity>
+            <View style={ styles.lastRow }>
+              <Text style={ styles.label }>Snooze</Text>
+              <ToggleSwitch />                
             </View>
-        );
-    }
+          </View>
+        </View>
+    );
+  }
 }
 
 const ToggleSwitch = () => {
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingLeft: 15,
         paddingRight: 15,
-        paddingBottom: 100,
+        paddingBottom: 130,
         justifyContent:'center',
         backgroundColor: '#0f0f0f',
     },
@@ -121,5 +121,3 @@ const styles = StyleSheet.create({
         color: '#666666'
     },
 });
-
-export default AddAlarm;

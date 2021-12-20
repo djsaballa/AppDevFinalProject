@@ -1,7 +1,7 @@
 import React, { Component, useState }  from 'react';
 import { StyleSheet, View, ScrollView, Switch, Text } from 'react-native';
 
-class AlarmList extends Component {  
+export default class AlarmList extends Component {  
     render() {
         return (
             <ScrollView style={ styles.container }>
@@ -32,26 +32,26 @@ class AlarmList extends Component {
 }
 
 const ToggleSwitch = () => {
-    const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  
-    return (
-      <View style={styles.toggleSwitch}>
-        <Switch
-          trackColor={{ false: "#3e3e3e", true: "#50C878" }}
-          thumbColor="white"
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleSwitch}
-          value={isEnabled}
-        />
-      </View>
-    );
-  }
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+  return (
+    <View style={styles.toggleSwitch}>
+      <Switch
+        trackColor={{ false: "#3e3e3e", true: "#50C878" }}
+        thumbColor="white"
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+      />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#141414',
+        backgroundColor: 'black',
     },
     row: {
         flex: 1,
@@ -83,5 +83,3 @@ const styles = StyleSheet.create({
         paddingRight: 15,
     },
 });
-
-export default AlarmList;
