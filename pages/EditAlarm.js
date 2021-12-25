@@ -29,7 +29,7 @@ export default class EditAlarm extends Component {
           </TouchableOpacity>
           <TouchableOpacity style={ styles.row } onPress={() => this.props.navigation.navigate('EditAlarmLabel')}>
             <Text style={ styles.label }>Label</Text>
-            <Text style={ styles.desc }>Kumakain ka na ba? {" "}
+            <Text style={ styles.desc }>Kumain ka na ba? {" "}
               <Icon
                 name="chevron-right"
                 size={14}
@@ -60,7 +60,7 @@ export default class EditAlarm extends Component {
           </View>
         </View>
         <View style={ styles.space }>
-          <TouchableOpacity style={ styles.deleteButton } >
+          <TouchableOpacity style={ styles.deleteButton } onPress={() => alert('Alarm Deleted')}>
             <Text style={ styles.deleteText }>Delete Alarm</Text>
           </TouchableOpacity>
         </View>
