@@ -23,7 +23,9 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "~3.8.0",
     "react-native-web": "0.17.1",
-    "react-native-wheel-time-picker": "^0.4.3"
+    "react-native-wheel-time-picker": "^0.4.3",
+    "expo-device": "~4.0.3",
+    "expo-notifications": "~0.13.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
