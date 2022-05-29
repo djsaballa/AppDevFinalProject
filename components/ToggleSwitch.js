@@ -85,10 +85,11 @@ export default class ToggleSwitch extends Component {
                 });  
               }
             } else {
+              alarms[alarmIndex] = alarm;
               await AsyncStorage.setItem('alarms', JSON.stringify(alarms));
               DeviceEventEmitter.emit('success', true);
-              console.log(alarm)
               await Notifications.cancelScheduledNotificationAsync(this.state.alarm.notificationId);
+              console.log('off')
             }
           }}
           value={this.state.alarm.enabled}
