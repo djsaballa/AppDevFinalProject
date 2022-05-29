@@ -1,18 +1,49 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 export default class EditAlarmLabel extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      label: '',
+    };
+  }
+
+  componentDidMount() {
+    if(this.props.route.params.label && this.props.route.params.day != this.state.label) {
+      let label = this.props.route.params.label;
+      this.setState({ label })
+    }
+  }
+
+  save() { 
+    let label = this.state.label;
+    this.props.navigation.navigate('EditAlarm', {label})
+  }
+
   render() {
     return (
       <View style={ styles.container}>
         <View style={ styles.card }>
           <View style={ styles.row }>
-            <TextInput 
+          <TextInput 
               style={ styles.input }
-              value= 'Kumain ka na ba?'
+              placeholder= {this.state.label}
+              placeholderTextColor= '#666666'
               selectionColor= 'orange'
+              onChangeText={(val) => {
+                this.setState({ label: val })
+              }}
+              returnKeyType="done"
+              onSubmitEditing={ () => this.save() }
             />
           </View>
+        </View>
+        <View style={[ styles.saveContainer ]}>
+          <TouchableOpacity style={[ styles.saveButton ]} onPress={() => { this.save() }}>
+            <Text style={ styles.save }>Save</Text>
+          </TouchableOpacity>          
         </View>
       </View>
     );
@@ -42,4 +73,20 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: 'white'
   },
+  saveContainer: {
+    flexDirection: 'row-reverse',
+    marginTop: 10
+  },
+  saveButton: {
+    alignItems: 'center',
+    width: 80,
+    borderRadius: 10,
+    backgroundColor: '#0096FF',
+    padding: 10
+  }, 
+  save: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: 'white',
+  }
 });
