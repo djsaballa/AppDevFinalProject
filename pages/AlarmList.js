@@ -13,8 +13,6 @@ export default class AlarmList extends Component {
       this.state = {
         alarms: [],
         edit: false, 
-        animateToggle: new Animated.Value(1),
-        animateEdit: new Animated.Value(0),
     }
   }
 
@@ -46,42 +44,16 @@ export default class AlarmList extends Component {
 
   compare(a,b) {
     if (a.time.hour === b.time.hour){
-       return (b.time.min - a.time.min);
+      if(a.time.min > b.time.min) {
+        return 1;
+      } else if(a.time.min < b.time.min) {
+        return -1;
+      }
     } else if(a.time.hour > b.time.hour){
        return 1;
     } else if(a.time.hour < b.time.hour){
        return -1;
     }
-  }
-
-  animation1() {
-    Animated.parallel([
-      Animated.timing(this.state.animateToggle, {
-        toValue: 0,
-        duration: 800,
-        useNativeDriver: true
-      }),
-      Animated.timing(this.state.animateEdit, {
-        toValue: 1,
-        duration: 600,
-        useNativeDriver: true
-      })
-    ]).start();
-  }
-
-  animation2() {
-    Animated.parallel([
-      Animated.timing(this.state.animateToggle, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true
-      }),
-      Animated.timing(this.state.animateEdit, {
-        toValue: 0,
-        duration: 5000,
-        useNativeDriver: true
-      })
-    ]).start();
   }
 
   render() {
@@ -90,23 +62,18 @@ export default class AlarmList extends Component {
         <View>
           <View style={styles.header}>
             {this.state.edit ?
-              <TouchableOpacity onPress={() => { this.setState(({ edit }) => ({ edit: !edit }), () => {
-                this.animation2();
-              }); }}>
+              <TouchableOpacity onPress={() => { this.setState(({ edit }) => ({ edit: !edit })); }}>
                 <Text style={ styles.headerTextLeft }>
                   Done
                 </Text>
               </TouchableOpacity>
               :
-              <TouchableOpacity onPress={() => { this.setState(({ edit }) => ({ edit: !edit }), () => {
-                this.animation1();
-              }); }}>
+              <TouchableOpacity onPress={() => { this.setState(({ edit }) => ({ edit: !edit })); }}>
                 <Text style={ styles.headerTextLeft }>
                   Edit
                 </Text>
               </TouchableOpacity>
             }
-            
             <Text style={ styles.headerTitle }> Alarm </Text>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('AddAlarm')}>
               <View style={ styles.headerTextRight }>
@@ -149,31 +116,18 @@ export default class AlarmList extends Component {
                 </Text>
               </View>
               {this.state.edit ? 
-                <Animated.View style={{ 
-                  transform: [
-                  {
-                    translateX: this.state.animateToggle.interpolate({
-                      inputRange: [0, 1],
-                      outputRange: [0 , 500]
-                    })
-                  }
-                  ],
-                }}>
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EditAlarm', {alarm})}>
-                    <View style={styles.editContainer}>
-                      <Icon
-                      name="chevron-right"
-                      size={18}
-                      color="#666666"/>
-                      </View>
-                  </TouchableOpacity>
-                </Animated.View>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('EditAlarm', {alarm})}>
+                  <View style={styles.editContainer}>
+                    <Icon
+                    name="chevron-right"
+                    size={18}
+                    color="#666666"/>
+                    </View>
+                </TouchableOpacity>
                 :
-                <Animated.View style={{ opacity:this.state.animateToggle }}>
-                  <View style={styles.toggleSwitch} >
-                    <ToggleSwitch alarm={alarm} />
-                  </View>
-                </Animated.View>
+                <View style={styles.toggleSwitch} >
+                  <ToggleSwitch alarm={alarm} />
+                </View>
               }
             </View>
           );
