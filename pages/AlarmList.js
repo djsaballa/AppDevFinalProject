@@ -63,7 +63,7 @@ export default class AlarmList extends Component {
       }),
       Animated.timing(this.state.animateEdit, {
         toValue: 1,
-        duration: 1000,
+        duration: 600,
         useNativeDriver: true
       })
     ]).start();
