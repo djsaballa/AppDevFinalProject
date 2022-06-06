@@ -90,6 +90,7 @@ export default class ToggleSwitch extends Component {
               DeviceEventEmitter.emit('success', true);
               await Notifications.cancelScheduledNotificationAsync(this.state.alarm.notificationId);
               console.log('off')
+              // await Notifications.cancelAllScheduledNotificationsAsync();
             }
           }}
           value={this.state.alarm.enabled}
